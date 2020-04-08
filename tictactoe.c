@@ -80,7 +80,7 @@ void botMove(char gameBoard[5][5], char sign){
     if (!blocking){
         while(k-->0){
             if (((worth[k] > worth[max] && (worth[k] < 3 && worth[k]>=0)) || worth[k] <= -9)) max = k;
-            if (worth[k] ==2) max = k
+            if (worth[k] ==2) max = k;
         }
     }
     k=3;
