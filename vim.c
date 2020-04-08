@@ -67,9 +67,12 @@ void cezar(char* tekst){
     printf("Podaj wartosc przesuniecia: ");
     int p;
     scanf("%d",&p);
+    flush();
+    p %= 26;
+    p= p<0?p+26:p;
     int i = -1;
     while (i ++< LEN-1) if (*(tekst+i) != 0 && *(tekst+i) != ' ' && isLetter(*(tekst+i)))
-            *(tekst+i) = (char)((((int)*(tekst+i)-((int)*(tekst+i)<97?65:97))+p%26)%26+((int)*(tekst+i)<97?65:97));
+            *(tekst+i) = (char)((((int)*(tekst+i)-((int)*(tekst+i)<97?65:97))+p)%26+((int)*(tekst+i)<97?65:97));
     printf("Szyfrogram to: ");
     prnt(tekst);
 }
