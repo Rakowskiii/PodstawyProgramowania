@@ -1,7 +1,14 @@
+/* Nazwa: Kółko i krzyżyk
+ * Autor: Maciej Rak
+ * Opis: Program pozwala rozegrać grę w kółko i krzyżyk z innym graczem lub S.I.
+ *       Porgram wykonany na zajęcia z podstaw programowania.
+ * Instrukcja: Aby zagrać przeciwko S.I., gdy program pyta o nazwę gracza, należy podać nazwę "Bot".
+ *
+ */
+
+
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <stdbool.h>
 #include <string.h>
 
@@ -73,6 +80,7 @@ void botMove(char gameBoard[5][5], char sign){
     if (!blocking){
         while(k-->0){
             if (((worth[k] > worth[max] && (worth[k] < 3 && worth[k]>=0)) || worth[k] <= -9)) max = k;
+            if (worth[k] ==2) max = k
         }
     }
     k=3;
