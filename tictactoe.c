@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -22,10 +23,10 @@ void botMove(char gameBoard[5][5], char sign){
         for (int x = 0 ; x < 5; x+=2){
             if(gameBoard[y][x] == sign){
                 worth[retrans[y]]++;
-                block[retrans[y]]-=10;
+                block[retrans[y]]-=9;
             }
             if(gameBoard[y][x] == nsign){
-                worth[retrans[y]]-=10;
+                worth[retrans[y]]-=9;
                 block[retrans[y]]++;
             }
         }
@@ -34,10 +35,10 @@ void botMove(char gameBoard[5][5], char sign){
         for (int y = 0 ; y < 5; y+=2){
             if(gameBoard[y][x] == sign){
                 worth[3+retrans[x]]++;
-                block[3+retrans[x]]-=10;
+                block[3+retrans[x]]-=9;
             }
             if(gameBoard[y][x] == nsign){
-                worth[3+retrans[x]]-=10;
+                worth[3+retrans[x]]-=9;
                 block[3+retrans[x]]++;
             }
         }
@@ -46,18 +47,18 @@ void botMove(char gameBoard[5][5], char sign){
     while(k -- > 0){
         if(gameBoard[trans[k]][trans[k]] == sign){
             worth[6]++;
-            block[6]-=10;
+            block[6]-=9;
         }
         if(gameBoard[trans[k]][trans[k]] == nsign){
-            worth[6]-=10;
+            worth[6]-=9;
             block[6]++;
         }
         if(gameBoard[trans[k]][trans[2-k]] == sign){
             worth[7]++;
-            block[7]-=10;
+            block[7]-=9;
         }
         if(gameBoard[trans[k]][trans[2-k]] == nsign){
-            worth[7]-=10;
+            worth[7]-=9;
             block[7]++;
         }
     }
@@ -65,16 +66,15 @@ void botMove(char gameBoard[5][5], char sign){
     bool blocking = false;
     k=8;
     while (k-->0) if (block[k] == 2){
-        max = k;
-        blocking = true;
-    }
-    k=8;
+            max = k;
+            blocking = true;
+        }
+    k=8;//11 22 32 13
     if (!blocking){
         while(k-->0){
-            if (worth[k] > worth[max]) max = k;
+            if (((worth[k] > worth[max] && (worth[k] < 3 && worth[k]>=0)) || worth[k] <= -9)) max = k;
         }
     }
-    k=8;while(k-->0)printf("%d\n",worth[k]);printf("%d\n\n",max);
     k=3;
     if (max < 3){ //wiersz najlepszy
         while(k-->0){
