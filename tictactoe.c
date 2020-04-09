@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#define flush(); while(getchar()!='\n');
 
 void game();
 void drawBoard();
@@ -121,21 +122,27 @@ void makeMove(char gameBoard[5][5], char sign){
     int dict[3] = {0,2,4};
     printf("Podaj wspolrzedna x: ");
     scanf("%1d",&x);
+    flush();
     printf("Podaj wspolrzedna y: ");
     scanf("%1d",&y);
+    flush();
     while(x < 1 || x > 3 || y < 1 || y > 3){
         printf("Bledne dane. Sprobuj ponownie. \n");
         printf("Podaj wsporzedna x: ");
         scanf("%1d",&x);
+        flush();
         printf("Podaj wsporzedna y: ");
         scanf("%1d",&y);
+        flush();
     }
     while (gameBoard[dict[y-1]][dict[x-1]] != ' '){
         printf("To miejsce jest juz zajete.\n");
         printf("Podaj wsporzedna x: ");
         scanf("%1d",&x);
+        flush();
         printf("Podaj wsporzedna y: ");
         scanf("%1d",&y);
+        flush();
     }
     gameBoard[dict[y-1]][dict[x-1]] = sign;
 }
@@ -166,9 +173,11 @@ void gameLoop(char gameBoard[5][5],char playerName[2][30]){
     if(strcmp(playerName[0],"Bot") && strcmp(playerName[1],"Bot")){
         printf("Gracz %s wybiera swoj znak (x/o) : ",playerName[0]);
         scanf("%1s",&signOfChoice);
+        flush();
         while(!(signOfChoice == 'o' || signOfChoice == 'x')){
-            printf("Bledny znak, wybierz nowy: \n");
+            printf("Bledny znak, wybierz nowy: ");
             scanf("%1s",&signOfChoice);
+            flush();
         }
     } else {
         //ustawienie znaku S.I na o
@@ -184,8 +193,8 @@ void gameLoop(char gameBoard[5][5],char playerName[2][30]){
         //ustawienie znaku w grze
         sign = (i+(int)(signOfChoice=='x'))%2 ? 'x':'o';
         //system("clear");
-        drawBoard(gameBoard);
-        printf("Tura gracza: %s. (znak to %c)\n",playerName[i%2],sign);
+        strcmp(playerName[i%2],"Bot")?drawBoard(gameBoard):printf("\nBot wykonal ruch\n\n");
+        if(strcmp(playerName[i%2],"Bot"))printf("Tura gracza: %s. (znak to %c)\n",playerName[i%2],sign);
         !strcmp(playerName[i%2],"Bot")?botMove(gameBoard,sign):makeMove(gameBoard,sign);
         //system("clear");
         //drawBoard(gameBoard);
@@ -198,9 +207,11 @@ void gameLoop(char gameBoard[5][5],char playerName[2][30]){
     printf("Chcesz zagrać ponownie? (t/n) :");
     char playAgain;
     scanf("%1s",&playAgain);
+    flush();
     while(!(playAgain == 't' || playAgain == 'n')){
         printf("Bledna opcja! \n");
         scanf("%1s",&playAgain);
+        flush();
     }
     playAgain == 'n' ? printf("Dziekuje za gre.\n"): game();
 }
