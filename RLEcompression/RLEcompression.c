@@ -7,6 +7,10 @@
  *              oraz nazwę pliku na którym planujemy przeprowadzić operację.
  *              plik po kompresji zachowuje nazwę, na koncu zostaje dodane .RLE.
  *              Plik po dekompresji traci rozszerzenie .RLE, wracając do poprzedniego rozszerzenia
+ *
+ *
+ *Przykład działania: plik.plik: {aaaaaaaaabbbbccdeeeeeeeeeeeeaaa} -> plik.plik.RLE: {9a4b2c1d12e3a}
+ *
  */
 
 
