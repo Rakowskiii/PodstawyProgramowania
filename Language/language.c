@@ -51,12 +51,10 @@ int minIndex(float* tab, int size){
     }
     return index;
 }
-
-//Zamienia duże litery na ich małe odpowiedniki
 char Smallify(char x) {
-    int temp = (int) x;
-    if (temp > 64 && temp < 91) return (char) (temp + 32);
-    return (char) temp;
+    int temp = (int)x;
+    if (temp > 64 && temp < 91) return (char)( temp + 32);
+    return temp;
 }
 
 void displayINT(int* tab) {
@@ -91,7 +89,7 @@ int main() {
         //DEBUG printf("%c",currChar);
         temp = Smallify(currChar);
         if(temp < 123 && temp > 96){
-            counter[temp-97]++;
+            counter[currChar-97]++;
             num++;
         }
         currChar = fgetc(f);
