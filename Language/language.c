@@ -1,4 +1,19 @@
-//usuwanie akcentów : https://miniwebtool.com/remove-accent/
+/* Nazwa: Wykrywanie języka tekstu
+ * Autor: Maciej Rak
+ * Opis: Program rozpoznający tekstu umieszonego w pliku ./tekst.txt
+ *        na podstawie analizy częstotliwośći występowania liter.
+ *        Dla lepszej dokładności zaleca się zamienić znaki specyficzne językowo
+ *        na ich podstawowe odpowiedniki. (np. ę -> e, ó -> o)
+ *        Nie jest to jednak wymagane.
+ * 
+ *Instrukcja: Należy wkleić interesujący nas tekst do pliku ./tekst.txt
+ *            Program porówna je ze statystykami ze znanych mu języków.
+ *            Statystyki odpowiednich języków umieszoczne są w plikach:
+ *                  ./lang-[nazwa-języka].txt
+ *Pomocny link: https://miniwebtool.com/remove-accent/
+ * ^ jest to narzędzie online służące do usuwania znaków specjalnych, zgodnie z ^
+ * ^ zaleceniem
+ */
 
 
 #include <stdio.h>
@@ -36,6 +51,8 @@ int minIndex(float* tab, int size){
     }
     return index;
 }
+
+//Zamienia duże litery na ich małe odpowiedniki
 char Smallify(char x) {
     int temp = (int) x;
     if (temp > 64 && temp < 91) return (char) (temp + 32);
