@@ -11,3 +11,8 @@ Spis programów:
 		Program pozwalający zaszyfrować dany tekst jawny
 		jednym z dwóch popularnych sposobów szyfrowania:
 		szyfr Cezara oraz Viegenere'a.
+
+	-> Language/language.c:
+		Program pozwalający rozpoznać język tekstu z pliku.
+		Do rozpoznania języka wykorzystana jest analiza 
+		częstotliwości występowania liter.
