@@ -5,7 +5,7 @@
  *        Dla lepszej dokładności zaleca się zamienić znaki specyficzne językowo
  *        na ich podstawowe odpowiedniki. (np. ę -> e, ó -> o)
  *        Nie jest to jednak wymagane.
- * 
+ *
  *Instrukcja: Należy wkleić interesujący nas tekst do pliku ./tekst.txt
  *            Program porówna je ze statystykami ze znanych mu języków.
  *            Statystyki odpowiednich języków umieszoczne są w plikach:
@@ -51,11 +51,7 @@ int minIndex(float* tab, int size){
     }
     return index;
 }
-char Smallify(char x) {
-    int temp = (int)x;
-    if (temp > 64 && temp < 91) return (char)( temp + 32);
-    return temp;
-}
+
 
 void displayINT(int* tab) {
     for (int i = 0; i < 26; i++) {
@@ -78,21 +74,25 @@ int main() {
     //Otawrcie pliku
     FILE* f;
     f = fopen("./tekst.txt","r");
-    f == NULL?printf("Nie udalo sie otworzyc pliku z danymi.\n"):printf("Plik z danymi otworzyony pomyslnie.\n");
+    if (f != NULL){
+        printf("Plik z danymi otworzyony pomyslnie.\n");
+    } else {
+        printf("Nie udalo sie otworzyc pliku z danymi.\n");
+    }
+
 
     //Zliczenie liter w tekscie
     int counter[26] = {0};
-    char currChar = fgetc(f);
-    char temp;
+    char currChar = (char)fgetc(f);
     int num = 0;
     do {
-        //DEBUG printf("%c",currChar);
-        temp = Smallify(currChar);
-        if(temp < 123 && temp > 96){
+        //DEBUG printf("%c",currChar)
+        if ((int)currChar > 64 && (int)currChar < 91) currChar += 32;
+        if(currChar < 123 && currChar > 96){
             counter[currChar-97]++;
             num++;
         }
-        currChar = fgetc(f);
+        currChar = (char)fgetc(f);
     } while (currChar != EOF);
     fclose(f);
 
@@ -102,8 +102,14 @@ int main() {
         stat[i] = ((float) counter[i] / (float) num)*100;
     }
 
-    //Wczytanie statystyk jezykowych
-    char* langs[] = {"lang-en.txt","lang-pl.txt","lang-fr.txt","lang-de.txt"};
+    //Wczytanie statystyk jezykowych "lang-en.txt","lang-pl.txt","lang-fr.txt","lang-de.txt"
+    char langs[4][20] = {
+            "lang-en.txt",
+            "lang-pl.txt",
+            "lang-fr.txt",
+            "lang-de.txt",
+    };
+
     FILE* buff;
     float langStats[4][26] = {0};
     for (int i = 0; i<4;i++){
@@ -113,37 +119,37 @@ int main() {
         fclose(buff);
     }
 
-    //Porownanie statystyk tekstu z pakietami
-    float sum[4] = {0};
-    for (int i = 0; i < 4; i++){
-        for(int j = 0; j < 26; j++) {
-            sum[i] += absf(stat[j] - langStats[i][j]);
-        }
-    }
-    printf("\n\n");
-    switch(minIndex(sum,4)){
-        char jezyk[20];
-        case DE:
-            strcpy(jezyk, "niemieckim");
-            printf("Analiza wystapien liter wskazuje, ze tekst jest najprawdopodobniej w jezyku %s.\n",jezyk);
-            Analiza(stat,langStats[DE],jezyk);
-            break;
-        case PL:
-            strcpy(jezyk, "polskim");
-            printf("Analiza wystapien liter wskazuje, ze tekst jest najprawdopodobniej w jezyku %s.\n",jezyk);
-            Analiza(stat,langStats[PL],jezyk);
-            break;
-        case FR:
-            strcpy(jezyk, "francuskim");
-            printf("Analiza wystapien liter wskazuje, ze tekst jest najprawdopodobniej w jezyku %s.\n",jezyk);
-            Analiza(stat,langStats[FR],jezyk);
-            break;
-        case EN:
-            strcpy(jezyk, "angielskim");
-            printf("Analiza wystapien liter wskazuje, ze tekst jest najprawdopodobniej w jezyku %s.\n",jezyk);
-            Analiza(stat,langStats[EN],jezyk);
-            break;
-    }
+   //Porownanie statystyk tekstu z pakietami
+   float sum[4] = {0};
+   for (int i = 0; i < 4; i++){
+       for(int j = 0; j < 26; j++) {
+           sum[i] += absf(stat[j] - langStats[i][j]);
+       }
+   }
+   printf("\n\n");
+   switch(minIndex(sum,4)){
+       char jezyk[20];
+       case DE:
+           strcpy(jezyk, "niemieckim");
+           printf("Analiza wystapien liter wskazuje, ze tekst jest najprawdopodobniej w jezyku %s.\n",jezyk);
+           Analiza(stat,langStats[DE],jezyk);
+           break;
+       case PL:
+           strcpy(jezyk, "polskim");
+           printf("Analiza wystapien liter wskazuje, ze tekst jest najprawdopodobniej w jezyku %s.\n",jezyk);
+           Analiza(stat,langStats[PL],jezyk);
+           break;
+       case FR:
+           strcpy(jezyk, "francuskim");
+           printf("Analiza wystapien liter wskazuje, ze tekst jest najprawdopodobniej w jezyku %s.\n",jezyk);
+           Analiza(stat,langStats[FR],jezyk);
+           break;
+       case EN:
+           strcpy(jezyk, "angielskim");
+           printf("Analiza wystapien liter wskazuje, ze tekst jest najprawdopodobniej w jezyku %s.\n",jezyk);
+           Analiza(stat,langStats[EN],jezyk);
+           break;
+   }
 
     return 0;
 }
