@@ -12,7 +12,7 @@
  *                  ./lang-[nazwa-języka].txt
  *Pomocny link: https://miniwebtool.com/remove-accent/
  * ^ jest to narzędzie online służące do usuwania znaków specjalnych, zgodnie z ^
- * ^ zaleceniem
+ * ^ zaleceniem ^
  */
 
 
