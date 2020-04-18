@@ -12,7 +12,11 @@ Spis programów:
 		jednym z dwóch popularnych sposobów szyfrowania:
 		szyfr Cezara oraz Viegenere'a.
 
-	-> Language/language.c:
+	-> Language/language.c :
 		Program pozwalający rozpoznać język tekstu z pliku.
 		Do rozpoznania języka wykorzystana jest analiza 
 		częstotliwości występowania liter.
+
+	-> RLEcompression :
+		Program CLI umożliwiający kompresować pliki 
+		metodą RLE (Run-Length Encoding)
