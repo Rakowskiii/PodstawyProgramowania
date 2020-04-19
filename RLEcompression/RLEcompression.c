@@ -35,7 +35,7 @@ void compress(char* argv) {
     fread(buff,length,sizeof(char),f);
 
     //zamkciecie pliku
-    flocse(f);
+    fclose(f);
 
     //stworzenie bufera na skompresowany plik i ustawienie wszystkich elementów na null
     char* compressed = (char*)malloc(2*length*sizeof(char));
