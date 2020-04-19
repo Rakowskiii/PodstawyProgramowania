@@ -1,4 +1,4 @@
-Na tym githubie są wszystkie projekty z 2 semestru studiów.
+Na tym githubie są wszystkie projekty z 2 semestru studiów z przedmioty: Podstawy Programowania.
 
 Spis programów:
 
