@@ -1,6 +1,7 @@
 /* Nazwa: Wyszukiwanie słowa w pliku
  * Autor: Maciej Rak
- * Opis: Program przeszukujący plik ./tekst.txt w poszukiwaniu słowa podanego na standardowym wejściu.
+ * Opis: Program przeszukujący plik ./tekst.txt w poszukiwaniu słowa podanego na standardowym wejściu,
+ *       zliczając ilość jego wystąpień.
  *       Program zamienia wszystkie litery na małe, oraz usuwa znaki nie będące literami, aby
  *       na pewno znaleźć wszystkie słowa zgodne z podanym, bez względu na zapis.
  *
