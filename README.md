@@ -17,6 +17,10 @@ Spis programów:
 		Do rozpoznania języka wykorzystana jest analiza 
 		częstotliwości występowania liter.
 
-	-> RLEcompression :
+	-> RLEcompression/RLEcompression.c :
 		Program CLI umożliwiający kompresować pliki 
 		metodą RLE (Run-Length Encoding)
+	
+	-> Find/FIND.c :
+		Program pozwalający wyszukać i zliczyć ile razy w tekscie
+		występuje interesujące nas słowo.
