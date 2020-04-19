@@ -19,27 +19,27 @@ void compress(char* argv) {
     printf("Rozpoczynanie kompresji pliku %s\n",argv);
     
     //Otwarcie pliku wejscia
-    FILE* f = fopen(argv,"r");
-    if ( f == NULL){
+    FILE* f = fopen(argv, "r");
+    if (f == NULL){
         printf("Nie ma takiego pliku.\n");
         return;
     }
 
     //szukanie długości pliku
-    fseek(f,0, SEEK_END);
+    fseek(f, 0, SEEK_END);
     long length = ftell(f);
-    fseek(f,0, SEEK_SET);
+    fseek(f, 0, SEEK_SET);
 
     //przepisanie pliku do bufera
     char* buff = (char*)malloc(length*sizeof(char));
-    fread(buff,length,sizeof(char),f);
+    fread(buff, length, sizeof(char),f);
 
     //zamkciecie pliku
     fclose(f);
 
     //stworzenie bufera na skompresowany plik i ustawienie wszystkich elementów na null
     char* compressed = (char*)malloc(2*length*sizeof(char));
-    memset(compressed,'\0',2*length);
+    memset(compressed, '\0', 2*length);
 
     //inicjalizacja kompresji
     long ptr = 0;
@@ -62,38 +62,38 @@ void compress(char* argv) {
 
     //Utworzenie nazwy pliku wyjscia
     char buffer[100];
-    strcpy(buffer,argv);
+    strcpy(buffer, argv);
     strcat(buffer,".RLE");
 
     //Utworzenie pliku wyjscia
-    f = fopen(buffer,"w");
+    f = fopen(buffer, "w");
     for (long i = 0; i < clength; i++){
-        fputc(compressed[i],f);
+        fputc(compressed[i], f);
     }
     //zamkciecie pliku
     fclose(f);
-    printf("Kompresja pliku %s zakonczona powodzeniem, otrzymany plik to %s .\n",argv,buffer);
+    printf("Kompresja pliku %s zakonczona powodzeniem, otrzymany plik to %s .\n", argv, buffer);
 }
 
 //Dekompresja pliku o nazwie argv
 void decompress(char* argv){
-    printf("Dekompresja pliku %s.\n",argv);
+    printf("Dekompresja pliku %s.\n", argv);
     
     //Otwarcie pliku wejscia
-    FILE* f = fopen(argv,"r");
-    if ( f == NULL){
+    FILE* f = fopen(argv, "r");
+    if (f == NULL){
         printf("Nie ma takiego pliku.\n");
         return;
     }
     
     //Znalezienie długości pliku
-    fseek(f,0, SEEK_END);
+    fseek(f, 0, SEEK_END);
     long length = ftell(f);
-    fseek(f,0, SEEK_SET);
+    fseek(f, 0, SEEK_SET);
     
     //Wczytanie pliku do bufera
     char* buff = (char*)malloc(length*sizeof(char));
-    fread(buff,length,sizeof(char),f);
+    fread(buff, length, sizeof(char), f);
     
     //Zamknięcie pliku
     fclose(f);
@@ -104,23 +104,23 @@ void decompress(char* argv){
     buffer[strlen(argv)-4]='\0';
     
     //Otwarcie/utworzenie pliku wyjscia
-    f = fopen(buffer,"w");
+    f = fopen(buffer, "w");
     
     //Dekompresja buffera to pliku wyjscia
     for (long i = 0; i < length; i+=2){
         for(int j = 0; j < buff[i]; j++){
-            fputc(buff[i+1],f);
+            fputc(buff[i+1], f);
         }
     }
     //Zamknięcie pliku
     fclose(f);
     
-    printf("Zakonczono dekompresje pliku %s do pliku %s .\n",argv,buffer);
+    printf("Zakonczono dekompresje pliku %s do pliku %s .\n", argv, buffer);
 }
 
 int main(int arc, char** argv){
     if(!strcmp(argv[1],"compress")) compress(argv[2]);
-    else if(!strcmp(argv[1],"decompress")) decompress(argv[2]);
+    else if(!strcmp(argv[1], "decompress")) decompress(argv[2]);
     else printf("Bledna opcja.\n");
     return 0;
 }
