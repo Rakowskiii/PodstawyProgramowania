@@ -28,3 +28,6 @@ Spis programów:
 	-> Rescue/rescue.c
 		Program pozwalający symulować ewakuację ludzi z określonej przestrzeni
 		do ustalonego punktu zbiorczego.
+		
+	-> Matrix/matrix.c
+		Program pozwalający sprawdzić czy macierz w pliku jest kwadratowa.
