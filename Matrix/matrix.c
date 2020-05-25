@@ -1,3 +1,10 @@
+/* Nazwa: Matrix
+ * Autor: Maciej Rak
+ * Opis: Program pozwala sprawdzić czy macierz zawarta w pliku ./macierz jest macierzą trójkątną.
+ * Instrukcja: Należy w pliku ./macierz umieścić macierz, zapisując w kolejnych wierszach pliku 
+ * kolejne wiersze macierzy. Kolejne elementy należy rozdzielić jednym ze znaków: '-';',';' ';'.'
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,14 +19,14 @@ int main() {
     int h = 1;
     int w = 0;
 
-    fgets(buff,255,file);
+    fgets(buff,buff_size,file);
     pch = strtok (buff," ,.-\n");
     while (pch != NULL){     //Zliczenie kolumn
         w++;
         pch = strtok (NULL, " ,.-\n");
     }
 
-    while(fgets(buff,255,file)){      //Zliczenie wierszy
+    while(fgets(buff,buff_size,file)){      //Zliczenie wierszy
         h++;
     }
 
@@ -31,7 +38,7 @@ int main() {
     dolna = 0;
     gorna = 0;
     if (w==h){   //sprawdzenie czy jest kwadratowa
-        while(fgets(buff,255,file)!=0){
+        while(fgets(buff,buff_size,file)!=0){
             pch = strtok (buff," ,.-\n");
             //while (pch != NULL)
             for(int j = 0; j < i; j++){ //sumowanie logiczne (istnieją/nie istnieją) niezerowych elementów poniżej przekątnej
