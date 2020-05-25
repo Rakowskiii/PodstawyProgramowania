@@ -1,3 +1,17 @@
+/* Nazwa: Rescue
+ * Autor: Maciej Rak
+ * Opis: Program pozwala symulować ruch pieszych w ewakuowanym budynku. Trasa ewakuacji jest ustalana 
+ * poprzez algorytm szukania najkrótszej trasy A*.
+ * Instrukcja: Należy edytować tablice 'map', tak aby odpowiadała budynkowi który chcemy symulować.
+ * Do oznaczenia ścian można użyć dowolnego znaku ASCII oprócz znaków zarezerwowanych:
+ *  'o' - oznaczające człowieka, których umieszczamy dowolną ilość na mapie, jednak w przypadku gdy jest ich więcej niż 50 
+ *  należy zmienić wartość MAX_PPL na odpowiednią.
+ *  ' ' - oznaczające przestrzeć wolną (lub przejście) którą można użyć do przemieszczania się.
+ *  'X' - oznaczające wyjście, (a także po wykonaniu programu wskazuje osoby, z których połozenia nie istniała ścieżka do wyjścia.
+ * Do poprawnego działania programu należy po edycji mapy, zmienić wartości H i W na kolejno wysokość i szerokość pomieszczenia.
+ *
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -7,7 +21,7 @@
 #define H 15
 #define W 40
 #define EXIT 'X'
-#define MAX_PPL 50
+#define MAX_PPL 100
 
 
 struct tNode{
@@ -217,8 +231,7 @@ char map[H][W] = {
         ongoing = 0;
         for(int i = 0; i < size; i++){
             if(people[i].path!=NULL){
-                //printf("x:%d y:%d px:%d py:%d wolne:%s\n",people[i].x,people[i].y,people[i].path->x,people[i].path->y,map[people[i].path->y][people[i].path->x] != 'o'?"Tak":"Nie");
-                if(map[people[i].path->y][people[i].path->x] != 'o'){
+               if(map[people[i].path->y][people[i].path->x] != 'o'){
                     map[people[i].y][people[i].x] = ' ';
                     people[i].y = people[i].path->y;
                     people[i].x = people[i].path->x;
