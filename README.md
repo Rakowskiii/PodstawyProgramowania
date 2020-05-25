@@ -24,3 +24,7 @@ Spis programów:
 	-> Find/FIND.c :
 		Program pozwalający wyszukać i zliczyć ile razy w tekscie
 		występuje interesujące nas słowo.
+		
+	-> Rescue/rescue.c
+		Program pozwalający symulować ewakuację ludzi z określonej przestrzeni
+		do ustalonego punktu zbiorczego.
