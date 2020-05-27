@@ -55,7 +55,7 @@ int main() {
         gorna = 1;
     }
 
-    printf("Macierz zawarta w pliku %s macierzą trojkatną dolną%s %s macierzą trojkątną gorną%s",dolna?"nie jest":"jest",dolna&&gorna?" i":",lecz",gorna?"nie jest":"jest",w!=h?", ponieważ macierz nie jest kwadratowa.\n":".\n");
+    printf("Macierz zawarta w pliku %s macierzą trojkatną dolną%s %s macierzą trojkątną gorną%s",dolna?"nie jest":"jest",dolna==gorna?" i":",lecz",gorna?"nie jest":"jest",w!=h?", ponieważ macierz nie jest kwadratowa.\n":".\n");
     return 0;
 }
 
