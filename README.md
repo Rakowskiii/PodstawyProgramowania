@@ -29,5 +29,13 @@ Spis programów:
 		Program pozwalający symulować ewakuację ludzi z określonej przestrzeni
 		do ustalonego punktu zbiorczego.
 		
+		/rescue_threading.c
+		Program pozwalający symulować ewakuację ludzi z określonej przestrzeni
+		do ustalonego punktu zbiorczego o szybszym działaniu zapewnionym dzięki działaniu wielu wątków.
+		
 	-> Matrix/matrix.c
 		Program pozwalający sprawdzić czy macierz w pliku jest kwadratowa.
+		
+	-> Pi/pi.c
+		Program służący do przybliżenia liczby PI przy wykorzystaniu wielowątkowości 
+		metodą Monte Carlo.
